@@ -21,7 +21,7 @@ let initialState: initialStateUsersReducerType  = {
 }
 
 
-const usersReducer = (state = initialState, action: any): initialStateUsersReducerType => {
+const usersReducer = (state = initialState, action: actionTypes): initialStateUsersReducerType => {
     switch(action.type){
         case SET_USERS_PAGE:
             return{
@@ -77,6 +77,7 @@ export const changeCurrentPage = (currentPage: number): changeCurrentPageType =>
 
 type actionTypes = setUsersPageType | updateCurrentPageType | followedUserType | toggleIsFollowingProgressType | changeCurrentPageType
 type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionTypes>
+
 export const getUsersPage = (currentPage: number, pageSize: number): ThunkType => {
     return async (dispatch) => {
         let response = await usersAPI.getUsers(currentPage, pageSize)

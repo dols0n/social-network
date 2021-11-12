@@ -9,7 +9,6 @@ const CREATE_NEW_DIALOG = 'dialogsPage/CREATE_NEW_DIALOG'
 const SEND_MESSAGE = '/dialogsPage/SEND_MESSAGE'
 
 
-
 const initialState: initialStateDialogsReducerType = {
     usersDialogs: {
         19829: {
@@ -20,10 +19,10 @@ const initialState: initialStateDialogsReducerType = {
     },
 }
 
-const dialogsReducer = (state = initialState, action: any): initialStateDialogsReducerType => {
+const dialogsReducer = (state = initialState, action: actionTypes): initialStateDialogsReducerType => {
     switch(action.type){
         case CREATE_NEW_DIALOG:
-            if(state.usersDialogs[action.userId] != action.userId){
+            if(Object.values(state.usersDialogs).find(elem => elem == action.userId ? false : true)){
                 let copyState = {...state}
                 copyState.usersDialogs = {...state.usersDialogs}
                 copyState.usersDialogs[action.userId] = {messages: [],

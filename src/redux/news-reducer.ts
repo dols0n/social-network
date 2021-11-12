@@ -18,7 +18,7 @@ const initialState: initialStateNewsReducerType = {
     }
 }
 
-const newsReducer = (state = initialState, action: any):initialStateNewsReducerType => {
+const newsReducer = (state = initialState, action: actionTypes):initialStateNewsReducerType => {
     switch(action.type){
         case SET_CATEGORY_DATA:
             return{...state, categories: {...state.categories, [action.category]: action.categoryData}}
