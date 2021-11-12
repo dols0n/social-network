@@ -1,0 +1,54 @@
+.app{
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+  "header"
+  "navbarAndProfile";
+
+  grid-template-rows: 60px 1fr;
+  background-color: #f1f1f1;
+}
+
+
+.header{
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 60px;
+  background-color: #2F4F4F;
+}
+.working-header {
+  width: 760px;
+  background-color: #2F4F4F;
+  margin: auto;
+}
+
+
+.navbarAndProfile{
+  grid-area: navbarAndProfile;
+  display: grid;
+
+  grid-template-areas:
+  "navbar profile";
+
+  grid-template-columns: 110px 650px;
+  position: relative;
+  margin: auto;
+  margin-top: 15px;
+}
+
+
+.navbar{
+  grid-area: navbar;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.profile{
+  grid-area: profile;
+  border-left: 1px solid #D3D3D3;
+}

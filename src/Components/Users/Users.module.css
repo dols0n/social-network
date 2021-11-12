@@ -1,0 +1,15 @@
+
+
+.activeMode{
+    font-weight: bold;
+}
+
+.paginator {
+    border-top: 1px solid #D3D3D3;
+    border-right: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+    text-align: center;
+    height: 50px;
+    background-color: #DCDCDC;
+
+}

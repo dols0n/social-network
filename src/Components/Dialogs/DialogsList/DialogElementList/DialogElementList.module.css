@@ -1,0 +1,52 @@
+.dialogElementList{
+    display: grid;
+
+    grid-template-areas:
+    "photo fullName"
+    "photo messages";
+
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 1fr 1fr;
+    text-decoration: none;
+    color: black;
+}
+
+.photoBlock{
+    grid-area: photo;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+.fullName{
+    grid-area: fullName;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.messages{
+    grid-area: messages;
+    position: relative;
+}
+
+
+.userPhoto{
+    height: 50px;
+    border-radius: 40px;
+}
+
+.smallMessageImage {
+    height: 30px;
+    border-radius: 40px;
+}
+.messageText {
+    margin-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 35px;
+    color: #696969;
+    font-size: 14px;
+}
+.noMessageAlert {
+    font-size: 14px;
+    color: #696969;
+}

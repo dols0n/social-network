@@ -1,0 +1,23 @@
+.newsElement{
+    display: inline-block;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+    width: 318px;
+    height: 465px;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.newsImage{
+    width: 100%;
+    height: 200px;
+    border-radius: 6px;
+}
+
+.newsAuthor {
+    border-bottom: 1px solid #D3D3D3;
+    margin-bottom: 5px;
+}

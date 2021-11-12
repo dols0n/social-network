@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+.header{
+    position: relative;
+}
+
+.userPhoto {
+    float: right;
+    color: white;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+}
+.userPhoto img {
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 50px;
+}
+.userPhoto n{
+    position: absolute;
+    right: 45px;
+    top: 11px;
+}
+.userPhoto:hover {
+    opacity: 0.7;
+}
+
+.menu{
+    position: absolute;
+    right: 0px;
+    top: 60px;
+    background-color: red;
+}
+.hideMenu {
+    display: none;
+}
+
+
+.logo {
+    position: absolute;
+    height: 50px;
+    top: 5px;
+    left: 20px;
+}
+.logo img {
+    height: 50px;
+}
+.logo h3 {
+    font-family: Comfortaa;
+    color: #f1f1f1;
+    margin: 0;
+    position: absolute;
+    top: 13px;
+    left: 48px;
+}

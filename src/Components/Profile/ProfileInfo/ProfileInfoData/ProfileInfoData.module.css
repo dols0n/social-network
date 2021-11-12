@@ -1,0 +1,139 @@
+.profileInfoData {
+    font-size: 15px;
+    position: relative;
+}
+
+.infoTitle {
+    display: flex;
+    margin-bottom: 7px;
+    margin-top: 10px;
+}
+
+.infoTitleLine {
+    width: 64.65%;
+    /*border-top: 1px solid black;
+    margin-top: 13px;
+    margin-left: 7px;*/
+    display: flex;
+}
+.infoTitleLine div {
+    width: 100%;
+    margin-top: 13px;
+    margin-left: 7px;
+    border-top: 1px solid #D3D3D3;
+}
+
+.infoContactsLine {
+    width: 100%;
+    /*border-top: 1px solid black;
+    margin-top: 13px;
+    margin-left: 7px;*/
+    display: flex;
+}
+.infoContactsLine div {
+    width: 100%;
+    margin-top: 13px;
+    margin-left: 7px;
+    border-top: 1px solid #D3D3D3;
+}
+
+.infoTitleEditSpan {
+    color: #808080;
+    font-size: 15px;
+    display: none;
+    padding-left: 7px;
+}
+.infoTitleEditSpan:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.hideInfoTitleEditSpan {
+    display: none;
+}
+
+.profileInfo:hover .infoTitleEditSpan {
+    display: block;
+}
+.profileContacts:hover .infoTitleEditSpan {
+    display: block;
+}
+
+.moveProfileContacts {
+    margin-top: -1px;
+}
+.profileContacts {
+    position: relative;
+}
+.contactsList, .editContactsList {
+    list-style: none;
+}
+.contactsList li {
+    color: #808080;
+    margin-bottom: 1px;
+}
+.editContactsList li {
+    color: #808080;
+    margin-bottom: 0px;
+}
+.contactsList a, .editContactsList a {
+    color: #000000;
+}
+
+.btnProfileContactsDataForm {
+    border: none;
+    font-size: 15px;
+    background-color: white;
+    color: #808080;
+    cursor: pointer;
+    position: absolute;
+    right: -8px;
+    top: 2px;
+}
+.btnProfileContactsDataForm:hover {
+    text-decoration: underline;
+    background-color: white;
+}
+
+.btnProfileInfoDataForm {
+    border: none;
+    font-size: 15px;
+    background-color: white;
+    color: #808080;
+    cursor: pointer;
+    position: absolute;
+    right: -8px;
+    top: 2px;
+}
+.btnProfileInfoDataForm:hover {
+    text-decoration: underline;
+    background-color: white;
+}
+
+.profileInfoData p {
+    color: #808080;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+.profileInfoData u {
+    color: #000000;
+    text-decoration: none;
+}
+
+.profileInfoDataForm input {
+    border: none;
+    background: white;
+    outline: none;
+    font-size: 15px;
+    padding: 0;
+    font-family: inherit;
+    border-bottom: 1px solid #D3D3D3;
+}
+.profileInfoDataForm p {
+    margin-bottom: 3px;
+}
+.profileInfoDataForm .lookingForAJob p{
+    height: 21px;
+}
+
+
+

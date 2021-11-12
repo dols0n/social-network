@@ -1,0 +1,63 @@
+.mainPage {
+    margin-left: 10px;
+}
+
+/* styles from input message (FORM) */
+.form {
+    position: relative;
+    background-color: white;
+    display: inline-block;
+    border-radius: 4px;
+    width: 100%;
+    /*margin-bottom: 10px;*/
+}
+
+.fieldPhoto {
+    height: 40px; /*  638px   */
+    border-radius: 40px;
+    margin: 10px 10px 10px 25px;
+}
+.fieldTextarea {
+    width: 563px;
+    border: none;
+    padding: 10px 0 5px 0px;
+    outline: none;
+    resize: none;
+
+}
+.fieldBlock {
+    border-bottom: 1px solid #D3D3D3;
+}
+.fieldButton {
+    display: block;
+    float: right;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 50px 4px 50px;
+    margin: 7px 20px 7px 0;
+    font-size: 15px;
+    background-color: #DCDCDC;
+    cursor: pointer;
+}
+.fieldButton:hover {
+    background-color: #D3D3D3;
+}
+
+/* styles from posts */
+
+.usersPosts {
+    /*background-color: white;*/
+    border-radius: 4px;
+}
+
+.postElement {
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+
+
+
+
+

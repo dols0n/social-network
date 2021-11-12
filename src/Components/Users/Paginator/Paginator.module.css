@@ -1,0 +1,37 @@
+.paginatorButton {
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #DCDCDC;
+}
+.paginatorButton:hover {
+    background-color: #DCDCDC;
+}
+.paginatorImg {
+    height: 20px;
+}
+
+
+
+.spanElement {
+    margin: 10px;
+    position: page;
+    border: 1px solid #A9A9A9;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.spanElement:hover {
+    background-color: #A9A9A9;
+}
+.activeMode{
+    font-weight: bold;
+    margin: 10px;
+    border: 1px solid #A9A9A9;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #A9A9A9;
+}
+.numberBlock{
+    display: inline-block;
+    width: 35px;
+}
