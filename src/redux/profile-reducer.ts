@@ -2,6 +2,8 @@ import {profileAPI} from "../api/api";
 import postPhoto from './../assets/image/postPhoto.jpg'
 import {stopSubmit} from "redux-form";
 import {initialStateProfileReducerType, profileObject, photosObject} from './../Types/types'
+import {ThunkAction} from "redux-thunk";
+import {GlobalStateType} from "./redux-store";
 
 
 
@@ -29,7 +31,7 @@ let initialState: initialStateProfileReducerType = {
 }
 
 
-const profileReducer = (state = initialState, action: any): initialStateProfileReducerType => {
+const profileReducer = (state = initialState, action: actionTypes): initialStateProfileReducerType => {
     switch(action.type){
         case SET_USER_PROFILE:
             return{
@@ -119,24 +121,29 @@ export const deleteFormData = (): deleteFormDataType => ({
     type: "delete"
 })
 
+type actionTypes = likesUserPostType | addNewUserPostType | deleteUserPostType | setUserProfileType
+    | setUserStatusType | setUserPhotoType | changeEditModeProfileDataType | changeEditModeProfileContactsType
+    | deleteFormDataType
 
-export const getUserProfile = (userId: number) => {
-    return async (dispatch: any) => {
+type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionTypes>
+
+export const getUserProfile = (userId: number): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.getUserProfile(userId)
         dispatch(setUserProfile(response))
         return response
     }
 }
 
-export const getUserStatus = (userId: number) => {
-    return async (dispatch: any) => {
+export const getUserStatus = (userId: number): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.getUserStatus(userId)
         dispatch(setUserStatus(response))
     }
 }
 
-export const updateUserStatus = (status: string) => {
-    return async (dispatch: any) => {
+export const updateUserStatus = (status: string): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.updateUserStatus(status)
         if (response.resultCode === 0) {
             dispatch(setUserStatus(status))
@@ -144,8 +151,8 @@ export const updateUserStatus = (status: string) => {
     }
 }
 
-export const updateUserPhoto = (photo: any) => {
-    return async (dispatch: any) => {
+export const updateUserPhoto = (photo: any): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.updateUserPhoto(photo)
         if(response.resultCode === 0){
             dispatch(setUserPhoto(response.data.photos))
@@ -153,8 +160,8 @@ export const updateUserPhoto = (photo: any) => {
     }
 }
 
-export const updateProfileData = (profile: profileObject) => {
-    return async (dispatch: any) => {
+export const updateProfileData = (profile: profileObject): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.updateProfileData(profile)
         if(response.resultCode === 0) {
             dispatch(setUserProfile(profile))
@@ -163,8 +170,8 @@ export const updateProfileData = (profile: profileObject) => {
     }
 }
 
-export const updateProfileContacts = (profile: profileObject) => {
-    return async (dispatch: any) => {
+export const updateProfileContacts = (profile: profileObject): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.updateProfileData(profile)
         if(response.resultCode === 0) {
             dispatch(setUserProfile(profile))

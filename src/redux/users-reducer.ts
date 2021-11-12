@@ -1,5 +1,7 @@
 import {followAPI, usersAPI} from "../api/api";
 import {initialStateUsersReducerType, userObject} from "../Types/types";
+import {ThunkAction} from "redux-thunk";
+import {GlobalStateType} from "./redux-store";
 
 
 const SET_USERS_PAGE = 'usersPage/SET_USERS_PAGE'
@@ -73,25 +75,26 @@ export const changeCurrentPage = (currentPage: number): changeCurrentPageType =>
     type: CHANGE_CURRENT_PAGE, currentPage
 })
 
-
-export const getUsersPage = (currentPage: number, pageSize: number) => {
-    return async (dispatch: any) => {
+type actionTypes = setUsersPageType | updateCurrentPageType | followedUserType | toggleIsFollowingProgressType | changeCurrentPageType
+type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionTypes>
+export const getUsersPage = (currentPage: number, pageSize: number): ThunkType => {
+    return async (dispatch) => {
         let response = await usersAPI.getUsers(currentPage, pageSize)
         dispatch(setUsersPage(response.items, response.totalCount))
         dispatch(updateCurrentPage(currentPage))
     }
 }
 
-export const followUser = (id: number) => {
-    return async (dispatch: any) => {
+export const followUser = (id: number): ThunkType => {
+    return async (dispatch) => {
         dispatch(toggleIsFollowingProgress(id, true))
         let response = await followAPI.follow(id)
         dispatch(followedUser(id, true))
         dispatch(toggleIsFollowingProgress(id, false))
     }
 }
-export const unfollowUser = (id: number) => {
-    return async (dispatch: any) => {
+export const unfollowUser = (id: number): ThunkType => {
+    return async (dispatch) => {
         dispatch(toggleIsFollowingProgress(id, true))
         let response = await followAPI.unfollow(id)
         dispatch(followedUser(id, false))

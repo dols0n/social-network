@@ -1,3 +1,6 @@
+import {ThunkAction} from "redux-thunk";
+import {GlobalStateType} from "../redux/redux-store";
+
 export type postsObject = {
     id: number
     postMessage: string
@@ -101,3 +104,4 @@ export type initialStateAuthReducerType = {
 export type initialStateAppReducerType = { // app-reducer
     initialized: boolean
 }
+

@@ -1,6 +1,8 @@
 import {profileAPI} from "../api/api";
 import userPhoto from './../assets/image/user.png'
 import {initialStateDialogsReducerType} from './../Types/types'
+import {ThunkAction} from "redux-thunk";
+import {GlobalStateType} from "./redux-store";
 
 
 const CREATE_NEW_DIALOG = 'dialogsPage/CREATE_NEW_DIALOG'
@@ -54,13 +56,13 @@ export const sendMessage = (message: string, userId: number): sendMessageType =>
     type: SEND_MESSAGE, message, userId
 })
 
+type actionTypes = createNewDialogType | sendMessageType
+type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionTypes>
 
 
 
-
-
-export const createNewDialogWithRequestPhoto = (userId: number) => {
-    return async (dispatch: any) => {
+export const createNewDialogWithRequestPhoto = (userId: number): ThunkType => {
+    return async (dispatch) => {
         let response = await profileAPI.getUserProfile(userId)
         dispatch(createNewDialog(userId, response.photos.small, response.fullName))
     }

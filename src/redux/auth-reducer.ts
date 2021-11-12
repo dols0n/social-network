@@ -1,6 +1,8 @@
 import {authAPI} from "../api/api";
 import {getUserProfile} from "./profile-reducer";
 import {initialStateAuthReducerType} from "../Types/types";
+import {ThunkAction} from "redux-thunk";
+import {GlobalStateType} from "./redux-store";
 
 const SET_AUTH_USER_DATA = 'auth/SET_AUTH_USER_DATA'
 const SET_LOGIN_SUCCESS = 'auth/SET_LOGIN_SUCCESS'
@@ -61,8 +63,11 @@ const setOwnerUserData = (ownerUserPhoto: string, fullName: string):setOwnerUser
     type: SET_OWNER_USER_DATA, ownerUserPhoto, fullName
 })
 
-export const getAuthUserData = () => {
-    return async (dispatch: any) => {
+type actionTypes = setAuthUserDataType | setLoginSuccessType | setOwnerUserDataType
+type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionTypes>
+
+export const getAuthUserData = (): ThunkType => {
+    return async (dispatch) => {
         let responseAuthMe = await authAPI.authMe()
         if (responseAuthMe.resultCode === 0) {
             dispatch(setAuthUserData(responseAuthMe.data.id, responseAuthMe.data.email, responseAuthMe.data.login, true))
@@ -74,8 +79,8 @@ export const getAuthUserData = () => {
     }
 }
 
-export const login = (email: string, password: string, rememberMe: boolean) => {
-    return async (dispatch: any) => {
+export const login = (email: string, password: string, rememberMe: boolean): ThunkType => {
+    return async (dispatch) => {
         let response = await authAPI.login(email, password, rememberMe)
         if(response.resultCode === 0) {
             dispatch(setLoginSuccess(response.data.userId))
@@ -87,8 +92,8 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
     }
 }
 
-export const logout = () => {
-    return async (dispatch: any) => {
+export const logout = (): ThunkType => {
+    return async (dispatch) => {
         let response = await authAPI.logout()
         if (response.resultCode === 0) {
             dispatch(setAuthUserData(null, null, null, false))
