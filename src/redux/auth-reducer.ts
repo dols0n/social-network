@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import {authAPI, ResultCode} from "../api/api";
 import {getUserProfile} from "./profile-reducer";
 import {initialStateAuthReducerType} from "../Types/types";
 import {ThunkAction} from "redux-thunk";
@@ -69,7 +69,7 @@ type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionType
 export const getAuthUserData = (): ThunkType => {
     return async (dispatch) => {
         let responseAuthMe = await authAPI.authMe()
-        if (responseAuthMe.resultCode === 0) {
+        if (responseAuthMe.resultCode === ResultCode.success) {
             dispatch(setAuthUserData(responseAuthMe.data.id, responseAuthMe.data.email, responseAuthMe.data.login, true))
             let profile = dispatch(getUserProfile(responseAuthMe.data.id))
             profile.then((responseUserData: any) => {
@@ -95,7 +95,7 @@ export const login = (email: string, password: string, rememberMe: boolean): Thu
 export const logout = (): ThunkType => {
     return async (dispatch) => {
         let response = await authAPI.logout()
-        if (response.resultCode === 0) {
+        if (response.resultCode === ResultCode.success) {
             dispatch(setAuthUserData(null, null, null, false))
 
         }

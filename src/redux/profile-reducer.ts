@@ -1,4 +1,4 @@
-import {profileAPI} from "../api/api";
+import {profileAPI, ResultCode} from "../api/api";
 import postPhoto from './../assets/image/postPhoto.jpg'
 import {stopSubmit} from "redux-form";
 import {initialStateProfileReducerType, profileObject, photosObject} from './../Types/types'
@@ -126,8 +126,9 @@ type actionTypes = likesUserPostType | addNewUserPostType | deleteUserPostType |
     | deleteFormDataType
 
 type ThunkType = ThunkAction<Promise<void>, GlobalStateType, unknown, actionTypes>
+type getUserProfile = ThunkAction<Promise<profileObject>, GlobalStateType, unknown, actionTypes>
 
-export const getUserProfile = (userId: number): ThunkType => {
+export const getUserProfile = (userId: number): getUserProfile => {
     return async (dispatch) => {
         let response = await profileAPI.getUserProfile(userId)
         dispatch(setUserProfile(response))
@@ -145,7 +146,7 @@ export const getUserStatus = (userId: number): ThunkType => {
 export const updateUserStatus = (status: string): ThunkType => {
     return async (dispatch) => {
         let response = await profileAPI.updateUserStatus(status)
-        if (response.resultCode === 0) {
+        if (response.resultCode === ResultCode.success) {
             dispatch(setUserStatus(status))
         }
     }
@@ -154,7 +155,7 @@ export const updateUserStatus = (status: string): ThunkType => {
 export const updateUserPhoto = (photo: any): ThunkType => {
     return async (dispatch) => {
         let response = await profileAPI.updateUserPhoto(photo)
-        if(response.resultCode === 0){
+        if(response.resultCode === ResultCode.success){
             dispatch(setUserPhoto(response.data.photos))
         }
     }
@@ -163,7 +164,7 @@ export const updateUserPhoto = (photo: any): ThunkType => {
 export const updateProfileData = (profile: profileObject): ThunkType => {
     return async (dispatch) => {
         let response = await profileAPI.updateProfileData(profile)
-        if(response.resultCode === 0) {
+        if(response.resultCode === ResultCode.success) {
             dispatch(setUserProfile(profile))
             dispatch(changeEditModeProfileData(false))
         }
@@ -173,7 +174,7 @@ export const updateProfileData = (profile: profileObject): ThunkType => {
 export const updateProfileContacts = (profile: profileObject): ThunkType => {
     return async (dispatch) => {
         let response = await profileAPI.updateProfileData(profile)
-        if(response.resultCode === 0) {
+        if(response.resultCode === ResultCode.success) {
             dispatch(setUserProfile(profile))
             dispatch(changeEditModeProfileContacts(false))
         }else{
